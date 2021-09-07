@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"github.com/Estiven9644/twittor-backend/bd"
+	"github.com/Estiven9644/twittor-backend/handlers"
+)
 
 func main() {
-	fmt.Printf("Hello Heroku")
+	if bd.ChequeoConexion() == 0 {
+		log.Fatal("Sin conexión a la BD")
+		return
+	}
+	handlers.Manejadores()
 }
